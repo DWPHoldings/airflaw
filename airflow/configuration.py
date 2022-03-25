@@ -711,7 +711,7 @@ if not os.path.isfile(TEST_CONFIG_FILE):
     )
 
     try:
-        with open(TEST_CONFIG_FILE, 'w') as f:
+        with open(TEST_CONFIG_FILE, 'w') as f:  # updated file
             cfg = parameterized_config(TEST_CONFIG)
             f.write(cfg.split(TEMPLATE_START)[-1].strip())
 
