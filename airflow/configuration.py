@@ -709,9 +709,15 @@ if not os.path.isfile(TEST_CONFIG_FILE):
     log.info(
         'Creating new Airflow config file for unit tests in: %s', TEST_CONFIG_FILE
     )
-    with open(TEST_CONFIG_FILE, 'w') as f:
-        cfg = parameterized_config(TEST_CONFIG)
-        f.write(cfg.split(TEMPLATE_START)[-1].strip())
+
+    try:
+        with open(TEST_CONFIG_FILE, 'w') as f:
+            cfg = parameterized_config(TEST_CONFIG)
+            f.write(cfg.split(TEMPLATE_START)[-1].strip())
+
+    except:
+        pass
+
 if not os.path.isfile(AIRFLOW_CONFIG):
     log.info(
         'Creating new Airflow config file in: %s',
